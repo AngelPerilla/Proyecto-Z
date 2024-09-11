@@ -1,0 +1,28 @@
+{% extends 'listar.html' %}
+
+{% block columnas %}
+  <tr>
+    <th scope="col">ID#</th>
+    <th scope="col">Nombre</th>
+    <th scope="col">Precio</th>
+    <th scope="col">Cantidad</th>
+    <th scope="col">Presentación</th>
+    <th scope="col">Acciones</th>
+  </tr>
+{% endblock %}
+
+{% block filas %}
+{% for i in object_list %}
+  <tr>
+    <td>{{ i.id }}</td>
+    <td>{{ i.nombre }}</td>
+    <td>{{ i.precio }}</td>
+    <td>{{ i.cantidad }}</td>
+    <td>{{ i.presentacion }}</td>
+    <td>
+      <button type="button" class="btn btn-primary"><i class="fas fa-edit"></i></button>
+      <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+    </td>
+  </tr>
+{% endfor %}
+{% endblock %}
