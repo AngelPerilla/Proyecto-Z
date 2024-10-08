@@ -6,4 +6,5 @@ app_name = 'app'
 urlpatterns = [
     path('home/', vista_home, name= 'home'),
     path('producto/listar/', ProductoListView.as_view(), name= 'producto_lista'),
+    path('producto/crear/', ProductoCreateView.as_view(), name = 'producto_crear'),
 ]
