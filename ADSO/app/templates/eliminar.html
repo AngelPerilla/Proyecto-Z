@@ -39,13 +39,15 @@
 
         <div class="alert alert-danger alert-dismissible">
             <h5><i class="icon fas fa-ban"></i>Advertencia!</h5>
-            <p>¿Estás seguro de que deseas eliminar el producto #{{object.id}}, {{object.nombre}}?, esta acción no se podrá deshacer.</p>
+            {% block alerta %}
+
+            {% endblock %}
         </div>
     </div>
     <div class="card-footer">
-        <button class="btn btn-primary btn-flat" type="submit"><i class="fas fa-trash"></i>Sí, aceptar</button>
+        <button class="btn btn-primary btn-flat" type="submit"><i class="fas fa-check"></i> Sí, aceptar</button>
         <a href="{{ listar_url }}" class="btn btn-info btn-flat">
-            <i class="fas fa-times"></i>Cancelar</a>
+            <i class="fas fa-times"></i> No, cancelar</a>
         </a>
     </div>
   </div>

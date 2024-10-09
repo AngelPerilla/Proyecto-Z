@@ -1,0 +1,29 @@
+{% extends 'categorias/cliente/lista.html' %}
+
+{% block columnas %}
+  <tr>
+    <th scope="col">ID#</th>
+    <th scope="col">Nombres</th>
+    <th scope="col">Apellidos</th>
+    <th scope="col">Documento</th>
+    <th scope="col">Tipo de documento</th>
+    <th scope="col">Fecha de nacimiento</th>
+  </tr>
+{% endblock %}
+
+{% block filas %}
+{% for i in object_list %}
+  <tr>
+    <td>{{ i.id }}</td>
+    <td>{{ i.nombres }}</td>
+    <td>{{ i.apellidos }}</td>
+    <td>{{ i.documento }}</td>
+    <td>{{ i.tipo_documento }}</td>
+    <td>{{ i.fecha_nacimiento }}</td>
+    <td>
+      <button type="button" class="btn btn-primary"><i class="fas fa-edit"></i></button>
+      <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+    </td>
+  </tr>
+{% endfor %}
+{% endblock %}

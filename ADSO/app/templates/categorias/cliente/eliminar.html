@@ -1,0 +1,4 @@
+{% extends "eliminar.html" %}
+{% block alerta %}
+<p>¿Estás seguro de que deseas eliminar el registro de la persona {{object.nombres}}?, numero de documento (#{{object.documento}}) esta acción no se podrá deshacer.</p>
+{% endblock %}

@@ -11,4 +11,4 @@ def lista_producto(request):
     'titulo' : 'Listado de productos:',
     'productos': Producto.objects.all()
     }
-    return render(request, 'categorias/producto/producto.html', nombre)
+    return render(request, 'categorias/producto.html', nombre)
