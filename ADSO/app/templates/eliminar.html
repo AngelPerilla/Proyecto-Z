@@ -1,0 +1,53 @@
+{% extends 'content.html' %}
+
+{% load widget_tweaks %}
+
+{% block contenido %}
+<form method="post" action=".">
+  <div class="card card-default">
+    <div class="card-header">
+      <h3 class="card-title">
+        <i class="fas fa-trash"></i>
+        {{ titulo }}
+      </h3>
+    </div>
+    <div class="card-body">
+
+      {% csrf_token %}
+        {% if form.errors %}
+        <div class="alert alert-danger alert-dismissible">
+          <h5><i class="icon fas fa-ban"></i> Ha ocurrido un error al eliminar el producto:</h5>
+          <ul>
+            {% for field in form %}
+            {% for error in field.errors %}
+            <li> {{ error }} </li>
+
+            <script>
+              Swal.fire({
+                title: 'Error',
+                text: 'Error al ingresar el producto',
+                icon: 'error',
+                confirmButtonText: 'Okey'
+              })
+            </script>
+
+            {% endfor %}
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        <div class="alert alert-danger alert-dismissible">
+            <h5><i class="icon fas fa-ban"></i>Advertencia!</h5>
+            <p>¿Estás seguro de que deseas eliminar el producto #{{object.id}}, {{object.nombre}}?, esta acción no se podrá deshacer.</p>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-primary btn-flat" type="submit"><i class="fas fa-trash"></i>Sí, aceptar</button>
+        <a href="{{ listar_url }}" class="btn btn-info btn-flat">
+            <i class="fas fa-times"></i>Cancelar</a>
+        </a>
+    </div>
+  </div>
+</form>
+{% endblock %}

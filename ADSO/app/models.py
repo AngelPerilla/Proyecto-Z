@@ -18,7 +18,7 @@ class Producto(models.Model):
 class Cliente(models.Model):
     nombres = models.CharField(max_length=80, verbose_name='Nombres', default='')
     apellidos = models.CharField(max_length=80, verbose_name='Apellidos', default='')
-    documento = models.CharField(max_length=20, verbose_name='Documento', default='')
+    documento = models.CharField(max_length=20, verbose_name='Documento',unique=True, default='')
     cedula_c = 'CC'
     cedula_e = 'CE'
     nit = 'NIT'
@@ -32,11 +32,11 @@ class Cliente(models.Model):
     tipo_documento = models.CharField(
         max_length=4,
         choices=[('','Seleccione una opción')] + list(opciones_documento.items()),
-        blank=True,
+        blank=True,unique=True,
         default=''
     )
     fecha_nacimiento = models.DateField(default=datetime.now, verbose_name='Fecha de nacimiento')
-    telefono = models.CharField(max_length=20, verbose_name='Teléfono', default='')
+    telefono = models.CharField(max_length=20, verbose_name='Teléfono',unique=True, default='')
     direccion = models.CharField(max_length=200, null=True, blank=True, verbose_name='Dirección', default='')
     def __str__(self):
         return self.nombres
