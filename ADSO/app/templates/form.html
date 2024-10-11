@@ -46,8 +46,11 @@
         {% endfor %}
     </div>
     <div class="card-footer">
-        <button class="btn btn-primary btn-flat" type="submit"><i class="fas fa-plus"></i> Agregar</button>
-    </div>
+      <button class="btn btn-primary btn-flat" type="submit"><i class="fas fa-check"></i> Agregar </button>
+      <a href="{{ listar_url }}" class="btn btn-info btn-flat">
+          <i class="fas fa-times"></i> Cancelar</a>
+      </a>
+  </div>
   </div>
 </form>
 {% endblock %}

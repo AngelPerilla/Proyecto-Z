@@ -1,11 +1,22 @@
 from django.db import models
 from datetime import datetime
 
+class Categoria(models.Model):
+    nombre = models.CharField(max_length=100, verbose_name='Nombre',unique=True, default='')
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        verbose_name = 'Categoria'
+        verbose_name_plural = 'Categorias'
+        db_table = 'Categoria'
+        ordering = ['id']
 class Producto(models.Model):
     nombre = models.CharField(max_length=60, verbose_name='Nombre', default='')
     precio = models.IntegerField(default=0)
     cantidad = models.IntegerField(default=0)
-    presentacion = models.CharField(max_length=100, verbose_name='Presentacion',unique=True, default='')
+    presentacion = models.CharField(max_length=100, verbose_name='Presentacion', default='')
+    categoria = models.ForeignKey(Categoria, null=True, on_delete=models.SET_NULL)
     def __str__(self):
         return self.nombre
 
@@ -21,11 +32,17 @@ class Cliente(models.Model):
     documento = models.CharField(max_length=20, verbose_name='Documento',unique=True, default='')
     cedula_c = 'CC'
     cedula_e = 'CE'
+    pasaporte = 'PP'
+    reg_civil = 'RC'
+    per_temp = 'PPT'
     nit = 'NIT'
     tarjeta_i = 'TI'
     opciones_documento = {
         cedula_c: 'Cédula de ciudadanía',
         cedula_e: 'Cédula de extrangería',
+        pasaporte: 'Cédula de extrangería',
+        reg_civil: 'Cédula de extrangería',
+        per_temp: 'Permiso de Permanencia Temporal',
         nit: 'Número de Identificación Tributaria (NIT)',
         tarjeta_i: 'Tarjeta de identidad'
     }

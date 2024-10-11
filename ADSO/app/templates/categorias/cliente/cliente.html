@@ -21,8 +21,16 @@
     <td>{{ i.tipo_documento }}</td>
     <td>{{ i.fecha_nacimiento }}</td>
     <td>
-      <button type="button" class="btn btn-primary"><i class="fas fa-edit"></i></button>
-      <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+      <button type="button" class="btn btn-primary">
+      <a href="{% url 'app:cliente_editar' i.pk %}" style="text-decoration: none; color: inherit;">
+        <i class="fas fa-edit"></i>
+      </a>
+      </button>
+      <button type="button" class="btn btn-danger">
+      <a href="{% url 'app:cliente_eliminar' i.pk %}" style="text-decoration: none; color: inherit;">
+        <i class="fas fa-trash"></i>
+      </a>
+    </button>    
     </td>
   </tr>
 {% endfor %}
